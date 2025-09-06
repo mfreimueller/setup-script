@@ -94,7 +94,7 @@ echo Installing kvm...
 
 sudo apt install qemu-system libvirt-daemon-system
 
-adduser $USER libvirt
+sudo adduser $USER libvirt
 
 # ----------
 # LaTeX
