@@ -8,7 +8,7 @@ sudo apt update
 
 echo Installing core tools...
 
-sudo apt install -y thunderbird thunderbird-l10n-de keepassxc syncthing build-essential git unzip curl gimp inkscape
+sudo apt install -y thunderbird thunderbird-l10n-de keepassxc syncthing build-essential git unzip curl gimp inkscape python3-venv python3-pip
 
 echo Enabling syncthing service...
 
@@ -22,6 +22,21 @@ read -p "Enter your email address for git... " email
 
 git config --global user.email "$email"
 git config --global user.name "Michael Freimüller"
+
+# --------
+# konsave
+# --------
+
+python3 -m venv /tmp/konsave
+source /tmp/konsave/bin/activate
+pip install setuptools
+pip install konsave
+
+konsave -i kde_profile.knsv
+
+deactivate
+
+rm -rf /tmp/konsave
 
 # --------
 # OnlyOffice
