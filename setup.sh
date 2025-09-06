@@ -15,7 +15,7 @@ echo Enabling syncthing service...
 systemctl --user enable --now syncthing.service
 
 # -------
-# Flatpak
+# git
 # -------
 
 read -p "Enter your email address for git... " email
