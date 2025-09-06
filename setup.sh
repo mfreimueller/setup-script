@@ -23,6 +23,23 @@ read -p "Enter your email address for git... " email
 git config --global user.email "$email"
 git config --global user.name "Michael Freimüller"
 
+# --------
+# OnlyOffice
+# --------
+
+read -p "Do you want to install OnlyOffice? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
+curl -L -O https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors_amd64.deb
+sudo dpkg -i onlyoffice-desktopeditors_amd64.deb
+rm onlyoffice-desktopeditors_amd64.deb
+
+sudo apt install -y -f
+
+fi
+
 # -------
 # Flatpak
 # -------
