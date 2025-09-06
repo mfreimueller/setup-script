@@ -27,6 +27,11 @@ git config --global user.name "Michael Freimüller"
 # konsave
 # --------
 
+read -p "Do you want to import the KDE profile? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
 python3 -m venv /tmp/konsave
 source /tmp/konsave/bin/activate
 pip install setuptools
@@ -37,6 +42,22 @@ konsave -i kde_profile.knsv
 deactivate
 
 rm -rf /tmp/konsave
+
+fi
+
+# --------
+# konsave
+# --------
+
+read -p "Do you want to setup the Firefox addons? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
+sudo mkdir -p /etc/firefox/policies
+sudo cp files/policies.json /etc/firefox/policies
+
+fi
 
 # --------
 # OnlyOffice
