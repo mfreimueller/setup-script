@@ -8,7 +8,7 @@ sudo apt update
 
 echo Installing core tools...
 
-sudo apt install -y thunderbird thunderbird-l10n-de keepassxc syncthing build-essential git unzip curl
+sudo apt install -y thunderbird thunderbird-l10n-de keepassxc syncthing build-essential git unzip curl gimp inkscape
 
 echo Enabling syncthing service...
 
