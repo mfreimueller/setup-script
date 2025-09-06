@@ -37,7 +37,7 @@ source /tmp/konsave/bin/activate
 pip install setuptools
 pip install konsave
 
-konsave -i kde_profile.knsv
+konsave -i files/kde_profile.knsv
 
 deactivate
 
