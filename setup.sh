@@ -10,6 +10,9 @@ echo Installing core tools...
 
 sudo apt install -y thunderbird thunderbird-l10n-de keepassxc syncthing build-essential git unzip curl gimp inkscape python3-venv python3-pip
 
+sudo apt remove --purge kmail korganizer konqueror
+sudo apt autoremove
+
 echo Enabling syncthing service...
 
 systemctl --user enable --now syncthing.service
