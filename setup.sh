@@ -97,7 +97,7 @@ curl -L -O https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb
 sudo dpkg -i docker-desktop-amd64.deb
 rm docker-desktop-amd64.deb
 
-sudo apt install -f
+sudo apt install -y -f
 
 fi
 
@@ -161,7 +161,7 @@ curl -O -L https://cdn.akamai.steamstatic.com/client/installer/steam.deb
 sudo dpkg -i steam.deb
 rm -f steam.deb
 
-sudo apt install -f # We might need to fix dependencies for steam
+sudo apt install -y -f # We might need to fix dependencies for steam
 
 fi
 
