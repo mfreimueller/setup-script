@@ -103,6 +103,9 @@ sudo apt install qemu-system libvirt-daemon-system virt-manager
 
 sudo adduser $USER libvirt
 
+sudo virsh net-autostart default
+
+
 # ----------
 # LaTeX
 # ----------
