@@ -105,6 +105,14 @@ sudo adduser $USER libvirt
 
 sudo virsh net-autostart default
 
+read -p "Do you want to import the Windows 11 VM config? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
+sudo virsh define --file files/Win_11.xml
+
+fi
 
 # ----------
 # LaTeX
