@@ -15,6 +15,11 @@ echo Enabling syncthing service...
 systemctl --user enable --now syncthing.service
 
 # -------
+# fstrim timer
+# -------
+sudo systemctl enable --now fstrim.timer
+
+# -------
 # git
 # -------
 
