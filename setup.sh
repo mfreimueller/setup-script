@@ -97,7 +97,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 echo Installing kvm...
 
-sudo apt install qemu-system libvirt-daemon-system
+sudo apt install qemu-system libvirt-daemon-system virt-manager
 
 sudo adduser $USER libvirt
 
