@@ -19,6 +19,7 @@ systemctl --user enable --now syncthing.service
 # -------
 # fstrim timer
 # -------
+
 sudo systemctl enable --now fstrim.timer
 
 # -------
@@ -29,6 +30,7 @@ read -p "Enter your email address for git... " email
 
 git config --global user.email "$email"
 git config --global user.name "Michael Freimüller"
+git config --global pull.rebase false
 
 # --------
 # konsave
