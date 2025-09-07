@@ -102,6 +102,11 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 # kvm
 # ----------
 
+read -p "Do you want to setup kvm/qemu? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
 echo Installing kvm...
 
 sudo apt install qemu-system libvirt-daemon-system virt-manager
@@ -116,6 +121,8 @@ answer=${answer,,}
 if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
 
 sudo virsh define --file files/Win_11.xml
+
+fi
 
 fi
 
