@@ -49,7 +49,7 @@ rm -rf /tmp/konsave
 fi
 
 # --------
-# konsave
+# Firefox AddOns
 # --------
 
 read -p "Do you want to setup the Firefox addons? [y/N] " answer
@@ -107,9 +107,9 @@ echo Installing LaTeX...
 
 sudo apt install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-luatex
 
-#
+# ----------
 # Docker
-#
+# ----------
 
 read -p "Do you want to setup docker? [y/N] " answer
 answer=${answer,,}
