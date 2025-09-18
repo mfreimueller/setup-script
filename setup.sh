@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 sudo apt update
 
 # ----------
@@ -8,7 +10,7 @@ sudo apt update
 
 echo Installing core tools...
 
-sudo apt install -y thunderbird thunderbird-l10n-de keepassxc syncthing build-essential git unzip curl gimp inkscape python3-venv python3-pip
+sudo apt install -y thunderbird thunderbird-l10n-de keepassxc syncthing build-essential git unzip curl gimp inkscape python3-venv python3-pip apt-transport-https
 
 sudo apt remove --purge kmail korganizer konqueror
 sudo apt autoremove
@@ -18,6 +20,12 @@ echo Enabling syncthing service...
 systemctl --user enable --now syncthing.service
 
 # -------
+# fstrim timer
+# -------
+
+sudo systemctl enable --now fstrim.timer
+
+# -------
 # git
 # -------
 
@@ -25,6 +33,7 @@ read -p "Enter your email address for git... " email
 
 git config --global user.email "$email"
 git config --global user.name "Michael Freimüller"
+git config --global pull.rebase false
 
 # --------
 # konsave
@@ -96,11 +105,29 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 # kvm
 # ----------
 
-# echo Installing kvm...
+read -p "Do you want to setup kvm/qemu? [y/N] " answer
+answer=${answer,,}
 
-# sudo apt install qemu-system libvirt-daemon-system virt-manager
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
 
-# sudo adduser $USER libvirt
+echo Installing kvm...
+
+sudo apt install qemu-system libvirt-daemon-system virt-manager
+
+sudo adduser $USER libvirt
+
+sudo virsh net-autostart default
+
+read -p "Do you want to import the Windows 11 VM config? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
+sudo virsh define --file files/Win_11.xml
+
+fi
+
+fi
 
 # ----------
 # LaTeX
@@ -110,9 +137,9 @@ echo Installing LaTeX...
 
 sudo apt install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-luatex
 
-# ----------
+#  ----------
 # Docker
-# ----------
+# -----------
 
 read -p "Do you want to setup docker? [y/N] " answer
 answer=${answer,,}
@@ -140,6 +167,26 @@ sudo dpkg -i docker-desktop-amd64.deb
 rm docker-desktop-amd64.deb
 
 sudo apt install -y -f
+
+fi
+
+# ----------
+# CoolerControl
+# ----------
+
+read -p "Do you want to setup CoolerControl? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
+curl -1sLf \
+  'https://dl.cloudsmith.io/public/coolercontrol/coolercontrol/setup.deb.sh' \
+  | sudo -E bash
+
+sudo apt update
+sudo apt install coolercontrol
+
+sudo systemctl enable --now coolercontrold
 
 fi
 
