@@ -71,6 +71,9 @@ answer=${answer,,}
 
 if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
 
+sudo apt remove --purge -y libreoffice-*
+sudo apt -y autoremove
+
 curl -L -O https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors_amd64.deb
 sudo dpkg -i onlyoffice-desktopeditors_amd64.deb
 rm onlyoffice-desktopeditors_amd64.deb
@@ -107,9 +110,9 @@ echo Installing LaTeX...
 
 sudo apt install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-luatex
 
-# ----------
+# ---------
 # Docker
-# ----------
+# ---------
 
 read -p "Do you want to setup docker? [y/N] " answer
 answer=${answer,,}
