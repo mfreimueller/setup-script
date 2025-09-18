@@ -215,17 +215,11 @@ answer=${answer,,}
 
 if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
 
-gpg --batch --generate-key <<EOF
-Key-Type: ed25519
-Key-Usage: sign
-Subkey-Type: cv25519
-Name-Real: Michael Freimüller
-Name-Email: $email
-Expire-Date: 3y
-%commit
-EOF
+echo "Follow the instructions on screen..."
 
-GPG_ID=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec/{print $5}' | tail -n1)
+gpg --generate-key
+
+read -p "Now enter the generated GPG ID and press ENTER: " GPG_ID
 
 pass init "$GPG_ID"
 
