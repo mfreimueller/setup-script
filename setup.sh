@@ -110,9 +110,9 @@ echo Installing LaTeX...
 
 sudo apt install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-luatex
 
-# ---------
+# ----------
 # Docker
-# ---------
+# ----------
 
 read -p "Do you want to setup docker? [y/N] " answer
 answer=${answer,,}
