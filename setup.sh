@@ -131,11 +131,18 @@ fi
 # LaTeX
 # ----------
 
+read -p "Do you want to install LaTeX? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
 echo Installing LaTeX...
 
 sudo apt install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-luatex
 
-#  ----------
+fi
+
+# -----------
 # Docker
 # -----------
 
