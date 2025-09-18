@@ -16,6 +16,23 @@ sudo apt autoremove -y
 echo Enabling syncthing service...
 
 systemctl --user enable --now syncthing.service
+
+# ----------
+# Fonts
+# ----------
+
+read -p "Do you want to install the fonts stored in files/fonts? [y/N] " answer
+answer=${answer,,}
+
+if [[ "$answer" == "y" || "$answer" == "yes" ]]; then
+
+mkdir -p ~/.fonts
+cp -r files/fonts/* ~/.fonts
+
+fc-cache
+
+fi
+
 # ----------
 # Dev Tools
 # ----------
