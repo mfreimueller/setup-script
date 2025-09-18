@@ -16,6 +16,15 @@ sudo apt autoremove -y
 echo Enabling syncthing service...
 
 systemctl --user enable --now syncthing.service
+# ----------
+# Dev Tools
+# ----------
+
+sudo apt install -y ghc cabal-install
+
+curl -s "https://get.sdkman.io" | bash
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
 # -------
 # fstrim timer
