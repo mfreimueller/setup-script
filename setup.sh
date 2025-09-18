@@ -93,11 +93,11 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 # kvm
 # ----------
 
-echo Installing kvm...
+# echo Installing kvm...
 
-sudo apt install qemu-system libvirt-daemon-system virt-manager
+# sudo apt install qemu-system libvirt-daemon-system virt-manager
 
-sudo adduser $USER libvirt
+# sudo adduser $USER libvirt
 
 # ----------
 # LaTeX
