@@ -37,7 +37,7 @@ fi
 # Dev Tools
 # ----------
 
-sudo apt install -y ghc cabal-install
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 curl -s "https://get.sdkman.io" | bash
 
